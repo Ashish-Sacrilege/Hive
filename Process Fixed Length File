@@ -14,3 +14,13 @@ LOCATION '/data/FixSample4';
 //Access table:
 
 Select * from employees_stg2;
+
+
+//Or load all data is a table with single column the use substr method to retrieve the relevant data.
+
+
+create table singleCol(alldata String);
+
+load data local inpath '<path>' overwrite into table singlecol;
+
+Select substr(alldata,1,5) as userid, substr(alldata,6,2) as name from signleCol;
