@@ -1,0 +1,16 @@
+//Create table and Specify regex
+
+CREATE external TABLE employees_stg2 (emplid STRING, name STRING, age String, salary String, dept STRING)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.contrib.serde2.RegexSerDe'
+WITH SERDEPROPERTIES (
+     "input.regex" = "(.{4})(.{35})(.{3})(.{11})(.{4})"
+       
+     )
+LOCATION '/data/FixSample4';
+
+
+//Load data to HDFS: hadoop fs -put <LFS Path> <HDFS Path>
+
+//Access table:
+
+Select * from employees_stg2;
